@@ -1,1 +1,1 @@
-# eeg_abnormality_localization
+# EEG Abnormality Localization
