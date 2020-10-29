@@ -2058,9 +2058,7 @@ t_button.onclick = function(){
   var stSS = parseInt(st_date_time_temp.format("ss"));
 
   diff = [myHH-stHH,myMM-stMM,mySS-stSS];
-  if (myHH<10){  myHH = '0' + new_h;}
-  if (myMM<10){  myMM = '0' + new_m;}
-  if (mySS<10){  mySS = '0' + new_s;}
+
   myStart = myHH + ':' + myMM + ':' + mySS;
   t_modal.style.display = "none";
   readEEG();
