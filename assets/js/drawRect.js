@@ -102,6 +102,73 @@ $(div).on('mouseup', function(e) {
         for (i=1; i < chArr.length ; i++){
           s = s.concat(' ',chArr[i])
         }
+        st_mil = rect_start.substring(9);
+        end_mil = rect_end.substring(9);
+
+        st_h = parseInt(rect_start.substring(0,2));
+        end_h = parseInt(rect_end.substring(0,2));
+
+        st_m = parseInt(rect_start.substring(3,5));
+        end_m = parseInt(rect_end.substring(3,5));
+
+        st_s = parseInt(rect_start.substring(6,8));
+        end_s = parseInt(rect_end.substring(6,8));
+
+        if (st_s>59){
+          st_s = st_s - 60;
+          st_m = st_m + 1;
+        }
+        if (end_s>59){
+          end_s = end_s - 60;
+          end_m = end_m + 1;
+        }
+
+        if (st_m>59){
+          st_m = st_m - 60;
+          st_h = st_h + 1;
+        }
+        if (end_m>59){
+          end_m = end_m - 60;
+          end_h = end_h + 1;
+        }
+
+        if (st_h>23){
+          st_h = st_h - 24;
+        }
+        if (end_h>23){
+          end_h = end_h - 24;
+        }
+
+        if (st_h<10){
+          st_h = '0' + st_h;
+          st_h = st_h.substring(0,2);
+        }
+        if (st_m<10){
+          st_m = '0' + st_m;
+          st_m = st_m.substring(0,2);
+        }
+        if (st_s<10){
+          st_s = '0' + st_s;
+          st_s = st_s.substring(0,2);
+        }
+
+        if (end_h<10){
+          end_h = '0' + end_h;
+          end_h = end_h.substring(0,2);
+        }
+        if (end_m<10){
+          end_m = '0' + end_m;
+          end_m = end_m.substring(0,2);
+        }
+        if (end_s<10){
+          end_s = '0' + end_s;
+          end_s = end_s.substring(0,2);
+        }
+
+
+
+        rect_start = st_h + ':' + st_m + ':' + st_s + ':' + st_mil;
+        rect_end = end_h + ':' + end_m + ':' + end_s + ':' + end_mil;
         new_row = ['','','',rect_start,rect_end,s,com];
         csv_ar.push(new_row);
       }
@@ -181,5 +248,6 @@ function writeToCSV(ar){
 function erase(){
   if(window.confirm("Erase current labels?")){
     csv_ar = [["Gender","Age","File Start","Start time","End time","Channel names","Comment"]];
+    call = 'e';
   }
 }
